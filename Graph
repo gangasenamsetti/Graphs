@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+void DFS(int node,vector<int>adj[],vector<int>&vis)
+{
+    vis[node]=1;
+    cout<<node<<endl;
+    for(auto it:adj[node]){
+        if(!vis[it]){
+            DFS(it,adj,vis);
+        }
+    }
+}
+int main() {
+    int n,e;
+    cin>>n>>e;
+    //first way to represent graph
+    // int matrix[n+1][n+1];
+    // int u,v;
+    // for(int i=0;i<e;i++){
+    //     cin>>u>>v;
+    //     matrix[u][v]=1;
+    //     matrix[v][u]=1; //when it is an undirected 
+    // }
+    
+    
+    //second way to represet a graph
+    vector<int>adj[n+1];
+    int u,v;
+    for(int i=0;i<e;i++){
+        cin>>u>>v;
+        adj[u].push_back(v);
+        adj[v].push_back(u); //when it is undirected graph
+    }
+    vector<int>vis(n,0);
+    DFS(1,adj,vis);
+    
+
+    return 0;
+}
