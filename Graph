@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void DFS(int node,vector<int>adj[], vector<int>&vis){
+void DFS(int node,vector<int>adj[], vector<int>&vis){ 
     vis[node]=1;
     cout<<node<<endl;
     for(auto it:adj[node]){
@@ -14,13 +14,13 @@ void DFS(int node,vector<int>adj[], vector<int>&vis){
 
 void BFS(int node,vector<int>adj[],vector<int>&vis){
     queue<int>q;
-    q.push(node);
+    q.push(node); //push 0 and insert the neighbouring values of that front of queue and pop that and push into a vector
     vis[node]=1;
     while(!q.empty()){
         node=q.front();
         cout<<node<<" ";
         q.pop();
-        for(auto it:adj[node]){
+        for(auto it:adj[node]){   //go to that particular adjacency vectpr if not visisted then push into vector
             if(!vis[it]){
                 q.push(it);
                 vis[it]=1;
